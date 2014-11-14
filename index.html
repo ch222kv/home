@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Projects</title>
+    <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="bower_components/core-ajax/core-ajax.html">
 </head>
 <body>
     <a href="Laboration-1-Webbteknik-II/">Laboration-1-Webbteknik-II</a>
@@ -10,5 +12,15 @@
     <a href="Workshop2/">Workshop2</a>
     <a href="Labb2/">Labb2</a>
     <a href="PHP-project/">PHP-project</a>
+    <core-ajax url="http://www.christofferholmgren.se/Laboration-1-Webbteknik-II/result.json" handleAs="json"></core-ajax>
+    <script>
+        window.addEventListener('polymer-ready', function(e){
+            var ajax = document.querySelector("core-ajax");
+            ajax.addEventListener("core-response", function(e){
+                console.log(this.response);
+            });
+            ajax.go();
+        });
+    </script>
 </body>
 </html>
